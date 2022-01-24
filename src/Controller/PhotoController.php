@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Utils\ImageOptimizer;
 use App\Entity\Photo;
 use App\Form\PhotoType;
 use Doctrine\Persistence\ManagerRegistry;
@@ -15,6 +16,9 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class PhotoController extends AbstractController
 {
+
+    private $imageOptimizer;
+
     /**
      * @Route("/", name="inicio")
      */
@@ -44,10 +48,9 @@ class PhotoController extends AbstractController
     /**
      * @Route("/photo", name="photo")
      */
-    public function nuevo(ManagerRegistry $doctrine, Request $request, SluggerInterface $slugger)
+    public function nuevo(ManagerRegistry $doctrine, Request $request, SluggerInterface $slugger, ImageOptimizer $imageOptimizer)
     {
         $photo = new Photo();
-
         $formulario = $this->createForm(PhotoType::class, $photo);
 
         $formulario->handleRequest($request);
