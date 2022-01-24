@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}Fotos de nuestros gatos{% endblock %}
+{% block body %}
+    {% if photos %}
+             <!-- Grid responsive de W3 -->
+            <div class="w3-row-padding w3-center">
+                {% for photo in photos %}
+                <div class="w3-col s12 m6 l6 w3-section">
+                    <img
+                        src="./assets/photos/{{ photo.getFileName }}"
+                        style="width: 100%"
+                        onclick="imgExpand(this)"
+                        class="w3-hover-opacity"
+                        alt="{{ photo.getDescription }}"
+                    />
+                </div>
+                {% endfor %}
+            </div>
+    {% endif %}
+{% endblock %}

@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Fotos de nuestros gatos{% endblock %}
-
 {% block body %}
 <!-- Navbar -->
         <div class="navbar">
@@ -186,90 +184,12 @@
             </p>
             <br />
 
-            <!-- Grid responsive de W3 -->
-            <div class="w3-row-padding w3-center">
-                <div class="w3-col s12 m6 l6 w3-section">
-                    <img
-                        src="./assets/cat4.jpeg"
-                        style="width: 100%"
-                        onclick="imgExpand(this)"
-                        class="w3-hover-opacity"
-                        alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                    />
-                </div>
-
-                <div class="w3-col s12 m6 l6 w3-section">
-                    <img
-                        src="./assets/cat4.jpeg"
-                        style="width: 100%"
-                        onclick="imgExpand(this)"
-                        class="w3-hover-opacity"
-                        alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                    />
-                </div>
-
-                <div class="w3-col s12 m6 l6 w3-section">
-                    <img
-                        src="./assets/cat4.jpeg"
-                        style="width: 100%"
-                        onclick="imgExpand(this)"
-                        class="w3-hover-opacity"
-                        alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                    />
-                </div>
-
-                <div class="w3-col s12 m6 l6 w3-section">
-                    <img
-                        src="./assets/cat4.jpeg"
-                        style="width: 100%"
-                        onclick="imgExpand(this)"
-                        class="w3-hover-opacity"
-                        alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                    />
-                </div>
-            </div>
-
-            <div class="w3-row-padding w3-center">
-                <div class="w3-col s12 m6 l6 w3-section">
-                    <img
-                        src="./assets/cat4.jpeg"
-                        style="width: 100%"
-                        onclick="imgExpand(this)"
-                        class="w3-hover-opacity"
-                        alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                    />
-                </div>
-
-                <div class="w3-col s12 m6 l6 w3-section">
-                    <img
-                        src="./assets/cat4.jpeg"
-                        style="width: 100%"
-                        onclick="imgExpand(this)"
-                        class="w3-hover-opacity"
-                        alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                    />
-                </div>
-
-                <div class="w3-col s12 m6 l6 w3-section">
-                    <img
-                        src="./assets/cat4.jpeg"
-                        style="width: 100%"
-                        onclick="imgExpand(this)"
-                        class="w3-hover-opacity"
-                        alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                    />
-                </div>
-
-                <div class="w3-col s12 m6 l6 w3-section">
-                    <img
-                        src="./assets/cat4.jpeg"
-                        style="width: 100%"
-                        onclick="imgExpand(this)"
-                        class="w3-hover-opacity"
-                        alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                    />
-                </div>
-            </div>
+            <!-- LISTA DE FOTOS -->
+            {% if photos %}
+                {{ include ('partials/photolist.html.twig', {
+                    'photos': photos })
+                }}
+            {% endif %}
         </div>
         <!-- Modelo W3 imágenes a tamaño grande -->
         <div

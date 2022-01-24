@@ -16,7 +16,33 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class PhotoController extends AbstractController
 {
     /**
-     * @Route("/photo", name="compartir_foto")
+     * @Route("/", name="inicio")
+     */
+    public function listaFotos(ManagerRegistry $doctrine)
+    {
+        $repositorio = $doctrine->getRepository(Photo::class);
+        $photos = $repositorio->findAll();
+
+        return $this->render('inicio.html.twig', [
+            'photos' => $photos
+        ]);
+    }
+
+    /**
+     * @Route("/photolist", name="lista_fotos")
+     */
+    public function listarFotos(ManagerRegistry $doctrine)
+    {
+        $repositorio = $doctrine->getRepository(Photo::class);
+        $photos = $repositorio->findAll();
+
+        return $this->render('photolist.html.twig', [
+            'photos' => $photos
+        ]);
+    }
+
+    /**
+     * @Route("/photo", name="photo")
      */
     public function nuevo(ManagerRegistry $doctrine, Request $request, SluggerInterface $slugger)
     {
@@ -30,29 +56,33 @@ class PhotoController extends AbstractController
             $originalFilename = pathinfo($photoFile->getClientOriginalName(), PATHINFO_FILENAME);
             $safeFilename = $slugger->slug($originalFilename);
             $newFilename = $safeFilename . '-' . uniqid() . '.' . $photoFile->guessExtension();
+            $photo = $formulario->getData();
+            $photo->setFileName($newFilename);
 
-            // Move the file to the directory where brochures are stored
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($photo);
+
+            // movemos las fotos a la carpeta de assets/photos
             try {
                 $photoFile->move(
                     $this->getParameter('photos_directory'),
                     $newFilename
                 );
             } catch (FileException $e) {
-                // ... handle exception if something happens during file upload
+                return new Response("Error subiendo imagen");
             }
-            $photo->setFileName($newFilename);
-
-            /*   $file = $foto->getFileName();
-            $fileName = md5(uniqid() . '.' . $file->guessExtension());
-            $file->move($this->getParameter('photos_directory'), $fileName);
-            $foto->setFileName($fileName);
- */
-            /*             $entityManager = $doctrine->getManager();
-            $entityManager->persist($fileName);
-            $entityManager->flush(); */
-
-            return new Response("¡Foto subida correctamente!");
+            try {
+                $entityManager->flush();
+            } catch (\Exception $e) {
+                return new Response("Error de conexión");
+            }
         }
+
+        // reseteamos formulario
+        unset($photo);
+        unset($formulario);
+        $photo = new Photo();
+        $formulario = $this->createForm(PhotoType::class, $photo);
 
         return $this->render('photo.html.twig', [
             'formulario' => $formulario->createView()
