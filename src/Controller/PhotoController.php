@@ -75,6 +75,7 @@ class PhotoController extends AbstractController
                 return new Response("Error subiendo imagen");
             }
             try {
+                $imageOptimizer->resize($newFilename);
                 $entityManager->flush();
             } catch (\Exception $e) {
                 return new Response("Error de conexión");
