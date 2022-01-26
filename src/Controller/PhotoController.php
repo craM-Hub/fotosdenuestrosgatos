@@ -33,14 +33,14 @@ class PhotoController extends AbstractController
     }
 
     /**
-     * @Route("/photolist", name="lista_fotos")
+     * @Route("/photos", name="photos")
      */
     public function listarFotos(ManagerRegistry $doctrine)
     {
         $repositorio = $doctrine->getRepository(Photo::class);
         $photos = $repositorio->findAll();
 
-        return $this->render('photolist.html.twig', [
+        return $this->render('partials/photolist.html.twig', [
             'photos' => $photos
         ]);
     }

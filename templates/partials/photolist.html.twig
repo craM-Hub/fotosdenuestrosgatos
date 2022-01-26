@@ -3,9 +3,9 @@
 {% block body %}
     {% if photos %}
              <!-- Grid responsive de W3 -->
-            <div class="w3-row-padding w3-center">
+            <div class="w3-row-padding w3-center infiniteContainer">
                 {% for photo in photos %}
-                <div class="w3-col s12 m6 l6 w3-section">
+                <div class="w3-col s12 m6 l6 w3-section infinite">
                     <img
                         src="./assets/photos/{{ photo.getFileName }}"
                         style="width: 100%"
@@ -17,4 +17,16 @@
                 {% endfor %}
             </div>
     {% endif %}
+    <script src="js/jquery.js"></script>
+    
+    <script src="js/infinite-scroll.pkgd.js"></script>
+    <script src="js/infiniteScroll.js"></script>
+    <script>
+        $('.infiniteContainer').infiniteScroll({
+            // options
+            path: '.infinitePath',
+            append: '.infinite',
+            history: false,
+        });
+    </script>
 {% endblock %}
