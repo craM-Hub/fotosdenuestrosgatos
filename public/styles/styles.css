@@ -289,6 +289,15 @@ html {
     max-width: 80%;
 }
 
+/* ORDENAR FOTOS MASONRY */
+.grid {
+    margin: 0 auto;
+}
+.grid-item {
+    width: 49%;
+    margin-bottom: 10px;
+}
+
 @-webkit-keyframes fade {
     from {
         opacity: 0.4;

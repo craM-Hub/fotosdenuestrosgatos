@@ -24,8 +24,10 @@ class PhotoController extends AbstractController
     public function inicio(ManagerRegistry $doctrine, $currentPage = 1): Response
     {
         //$em = $this->getDoctrine()->getManager();
-        $limit = 2;
         //$photos = $em->getRepository(Photo::class)->getAllPers($currentPage, $limit);
+
+        // Numero de fotos por página
+        $limit = 4;
 
         $repositorio = $doctrine->getRepository(Photo::class);
         $photos = $repositorio->getAllPers($currentPage, $limit);
@@ -47,10 +49,11 @@ class PhotoController extends AbstractController
      */
     public function indexAction(ManagerRegistry $doctrine, $currentPage = 1)
     {
-
         //$em = $this->getDoctrine()->getManager();
-        $limit = 2;
         //$photos = $em->getRepository(Photo::class)->getAllPers($currentPage, $limit);
+
+        // Numero de fotos por página
+        $limit = 4;
 
         $repositorio = $doctrine->getRepository(Photo::class);
         $photos = $repositorio->getAllPers($currentPage, $limit);
@@ -123,7 +126,7 @@ class PhotoController extends AbstractController
                 return new Response("Error subiendo imagen");
             }
             try {
-                $imageOptimizer->resize($newFilename);
+                //$imageOptimizer->resize($newFilename);
                 $entityManager->flush();
             } catch (\Exception $e) {
                 return new Response("Error de conexión");
