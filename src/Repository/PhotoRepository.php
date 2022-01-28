@@ -7,12 +7,12 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Foto|null find($id, $lockMode = null, $lockVersion = null)
- * @method Foto|null findOneBy(array $criteria, array $orderBy = null)
- * @method Foto[]    findAll()
- * @method Foto[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Photo|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Photo|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Photo[]    findAll()
+ * @method Photo[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class FotoRepository extends ServiceEntityRepository
+class PhotoRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -20,7 +20,7 @@ class FotoRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Foto[] Returns an array of Foto objects
+    //  * @return Photo[] Returns an array of Photo objects
     //  */
     /*
     public function findByExampleField($value)

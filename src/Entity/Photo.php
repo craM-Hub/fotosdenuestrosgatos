@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\FotoRepository;
+use App\Repository\PhotoRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=FotoRepository::class)
+ * @ORM\Entity(repositoryClass=PhotoRepository::class)
  */
 class Photo
 {
