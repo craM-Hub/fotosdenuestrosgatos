@@ -28,15 +28,18 @@
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
-            {# <script
+            <script
             src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"
             integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ=="
-            crossorigin="anonymous"
-            ></script>
-            <script src="js/imgExpand.js"></script>
-            <script src="js/animation.js"></script>
-            <script src="js/progressScrollBar.js"></script>
-            <script src="js/carousel.js"></script> #}
+            crossorigin="anonymous"></script>
+            <script src="/js/jquery.js"></script>
+            <script src="/js/imgExpand.js"></script>
+            <script src="/js/progressScrollBar.js"></script>
+            <script src="/js/carousel.js"></script>
+            <script src="/js/infinite-scroll.pkgd.js"></script>
+            <script src="/js/infiniteScroll.js"></script>
+            <script src="/js/masonry.pkgd.js"></script>
+            <script src="/js/imagesloaded.pkgd.js"></script>
         {% endblock %}
     </head>
     <body>
@@ -55,25 +58,15 @@
             </div>
             <div class="gradient"></div>
         </div>
-
-        <!-- Container (Photos) -->
-        <div class="w3-content w3-container w3-padding-64" id="portfolio">
-            <h3 class="w3-center">Fotos</h3>
-            <p class="w3-center">
-                <em>Aquí tenemos algunos de los lorem ipsum tipsum.<br /> </em>
-            </p>
-            <br />
-
-            <!-- LISTA DE FOTOS -->
-            {% if photos %}
-                {{ include ('photos.html.twig', {
-                    'photos': photos,
-                    'maxPages': maxPages,
-                    'currentPage': currentPage,
-                    'thispage': thisPage })
-                }}
-            {% endif %}
-        </div>
+        <!-- LISTA DE FOTOS -->
+        {% if photos %}
+            {{ include ('photos.html.twig', {
+                'photos': photos,
+                'maxPages': maxPages,
+                'currentPage': currentPage,
+                'thispage': thisPage })
+            }}
+        {% endif %}
         <!-- Modelo W3 imágenes a tamaño grande -->
         <div
             id="modal01"
@@ -237,19 +230,7 @@
             </div>
         </div>
         <div class="slider"></div>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"
-            integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ=="
-            crossorigin="anonymous"
-        ></script>
-        <script src="/js/jquery.js"></script>
-        <script src="/js/imgExpand.js"></script>
-        <script src="/js/animation.js"></script>
-        <script src="/js/progressScrollBar.js"></script>
-        <script src="/js/carousel.js"></script>
-        <script src="/js/infinite-scroll.pkgd.js"></script>
-        <script src="/js/infiniteScroll.js"></script>
-        <script src="/js/masonry.pkgd.js"></script>
+ 
         {% endblock %}
     </body>
 </html>
