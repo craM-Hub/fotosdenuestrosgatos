@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Photo;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * @method Photo|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +18,28 @@ class PhotoRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Photo::class);
+    }
+
+    public function getAllPers($currentPage = 1, $limit = 3)
+    {
+        // Create our query
+        $query = $this->createQueryBuilder('p')
+            ->getQuery();
+
+        $paginator = $this->paginate($query, $currentPage, $limit);
+
+        return array('paginator' => $paginator, 'query' => $query);
+    }
+
+    public function paginate($dql, $page = 1, $limit = 3)
+    {
+        $paginator = new Paginator($dql);
+
+        $paginator->getQuery()
+            ->setFirstResult($limit * ($page - 1)) // Offset
+            ->setMaxResults($limit); // Limit
+
+        return $paginator;
     }
 
     // /**
