@@ -19,13 +19,12 @@ class PhotoController extends AbstractController
 
     private $imageOptimizer;
     /**
-     * @Route("/photos/{currentPage}", name="photos")
+     * @Route("/", name="inicio")
      */
-    public function indexAction(ManagerRegistry $doctrine, $currentPage = 1)
+    public function inicio(ManagerRegistry $doctrine, $currentPage = 1): Response
     {
-
         //$em = $this->getDoctrine()->getManager();
-        $limit = 4;
+        $limit = 2;
         //$photos = $em->getRepository(Photo::class)->getAllPers($currentPage, $limit);
 
         $repositorio = $doctrine->getRepository(Photo::class);
@@ -35,7 +34,32 @@ class PhotoController extends AbstractController
 
         $maxPages = ceil($photos['paginator']->count() / $limit);
 
-        return $this->render('partials/photolist.html.twig', array(
+        return $this->render('inicio.html.twig', array(
+            'photos' => $photosResultado,
+            'maxPages' => $maxPages,
+            'currentPage' => $currentPage,
+            'thisPage' => $currentPage,
+            'all_items' => $photosQueryCompleta
+        ));
+    }
+    /**
+     * @Route("/photos/{currentPage}", name="photos")
+     */
+    public function indexAction(ManagerRegistry $doctrine, $currentPage = 1)
+    {
+
+        //$em = $this->getDoctrine()->getManager();
+        $limit = 2;
+        //$photos = $em->getRepository(Photo::class)->getAllPers($currentPage, $limit);
+
+        $repositorio = $doctrine->getRepository(Photo::class);
+        $photos = $repositorio->getAllPers($currentPage, $limit);
+        $photosResultado = $photos['paginator'];
+        $photosQueryCompleta =  $photos['query'];
+
+        $maxPages = ceil($photos['paginator']->count() / $limit);
+
+        return $this->render('photolist.html.twig', array(
             'photos' => $photosResultado,
             'maxPages' => $maxPages,
             'thisPage' => $currentPage,
@@ -46,7 +70,7 @@ class PhotoController extends AbstractController
     /**
      * @Route("/", name="inicio")
      */
-    public function listaFotos(ManagerRegistry $doctrine)
+    /*     public function listaFotos(ManagerRegistry $doctrine)
     {
         $repositorio = $doctrine->getRepository(Photo::class);
         $photos = $repositorio->findAll();
@@ -54,7 +78,7 @@ class PhotoController extends AbstractController
         return $this->render('inicio.html.twig', [
             'photos' => $photos
         ]);
-    }
+    } */
 
     /**
      * @Route("/photos", name="photos")
