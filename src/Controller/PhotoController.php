@@ -34,7 +34,7 @@ class PhotoController extends AbstractController
 
         $maxPages = ceil($photos['paginator']->count() / $limit);
 
-        return $this->render('inicio.html.twig', array(
+        return $this->render('base.html.twig', array(
             'photos' => $photosResultado,
             'maxPages' => $maxPages,
             'currentPage' => $currentPage,
@@ -59,7 +59,7 @@ class PhotoController extends AbstractController
 
         $maxPages = ceil($photos['paginator']->count() / $limit);
 
-        return $this->render('photolist.html.twig', array(
+        return $this->render('photos.html.twig', array(
             'photos' => $photosResultado,
             'maxPages' => $maxPages,
             'thisPage' => $currentPage,
@@ -75,7 +75,7 @@ class PhotoController extends AbstractController
         $repositorio = $doctrine->getRepository(Photo::class);
         $photos = $repositorio->findAll();
 
-        return $this->render('inicio.html.twig', [
+        return $this->render('base.html.twig', [
             'photos' => $photos
         ]);
     } */
@@ -88,7 +88,7 @@ class PhotoController extends AbstractController
         $repositorio = $doctrine->getRepository(Photo::class);
         $photos = $repositorio->findAll();
 
-        return $this->render('partials/photolist.html.twig', [
+        return $this->render('partials/photos.html.twig', [
             'photos' => $photos
         ]);
     } */
