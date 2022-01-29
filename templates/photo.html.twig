@@ -11,11 +11,19 @@
         {{ form_errors(formulario) }}
     </div>
     <div class="col">
-        <div class="col">
+        <div class="col" id="form-fileName">
             {{ form_row(formulario.fileName) }}
         </div>
-        <div class="col" id="some-custom-id">
+        <div class="col" id="form-description">
             {{ form_row(formulario.description) }}
+        </div>
+        <div class="row">
+            <div class="col" id="form-save">
+                {{ form_row(formulario.save) }}
+            </div>
+            <div class="col" id="form-description">
+                <a href="/" class="btn btn-primary">Volver</a>
+            </div>
         </div>
     </div>
 {{ form_end(formulario) }}
