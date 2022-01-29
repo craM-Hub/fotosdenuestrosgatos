@@ -2,5 +2,17 @@
 {% block title %}Fotos de nuestros gatos{% endblock %}
 {% block body %}
     <h1>Nueva foto</h1>
-    {{ form(formulario) }}
+    {{ form_start(formulario) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(formulario) }}
+    </div>
+    <div class="col">
+        <div class="col">
+            {{ form_row(formulario.fileName) }}
+        </div>
+        <div class="col" id="some-custom-id">
+            {{ form_row(formulario.description) }}
+        </div>
+    </div>
+{{ form_end(formulario) }}
 {% endblock %}
