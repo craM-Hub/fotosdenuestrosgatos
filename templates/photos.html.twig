@@ -10,9 +10,9 @@
             </p>
             <br />
              <!-- CONTENEDOR FOTOS -->
-            <div class="w3-row-padding w3-center infiniteContainer grid">
+            <div class="infiniteContainer grid">
                 {% for photo in photos %}
-                <div class="w3-col s12 m6 l6 w3-section infinite grid-item">
+                <div class="infinite grid-item">
                     <img
                         src="../assets/photos/{{ photo.getFileName }}"
                         style="width: 100%"
