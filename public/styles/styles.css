@@ -102,6 +102,7 @@ html {
 }
 
 .navbar {
+    z-index: 2;
     background-image: linear-gradient(
         to top,
         rgba(0, 0, 0, 0),

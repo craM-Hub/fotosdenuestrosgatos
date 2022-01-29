@@ -62,7 +62,7 @@ class PhotoController extends AbstractController
 
         $maxPages = ceil($photos['paginator']->count() / $limit);
 
-        return $this->render('photos.html.twig', array(
+        return $this->render('/partials/photos.html.twig', array(
             'photos' => $photosResultado,
             'maxPages' => $maxPages,
             'thisPage' => $currentPage,
