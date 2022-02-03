@@ -29,48 +29,16 @@
             </div>
             <p>Déjanos una nota:</p>
             <form action="#" target="_blank">
+            {{ form_start(messagesForm) }}
                 <div
                     class="w3-row-padding"
                     style="margin: 0 -16px 8px -16px"
                 >
-                    <div class="w3-half">
-                        <label for="name" style="display: none;">Nombre</label>
-                        <input
-                            id="name"
-                            class="w3-input w3-border"
-                            type="text"
-                            placeholder="Nombre"
-                            required
-                            name="Name"
-                        />
-                    </div>
-                    <div class="w3-half">
-                        <label for="email" style="display: none;">Nombre</label>
-                        <input
-                            id="email"
-                            class="w3-input w3-border"
-                            type="text"
-                            placeholder="Email"
-                            required
-                            name="Email"
-                        />
-                    </div>
-                </div>
-                <label for="message" style="display: none;">Nombre</label>
-                <input
-                    id="message"
-                    class="w3-input w3-border"
-                    type="text"
-                    placeholder="Mensaje"
-                    required
-                    name="Message"
-                />
-                <button
-                    class="w3-button w3-black w3-right w3-section"
-                    type="submit"
-                >
-                    <em class="fa fa-paper-plane"></em> ENVIAR MENSAJE
-                </button>
+                {{ form_row(messagesForm.name) }}
+                {{ form_row(messagesForm.email) }}
+                {{ form_row(messagesForm.message) }}
+                {{ form_row(messagesForm.save) }}
+            {{ form_end(messagesForm) }}
             </form>
         </div>
         <div class="w3-col m4 w3-container">

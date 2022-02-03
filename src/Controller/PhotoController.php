@@ -27,7 +27,7 @@ class PhotoController extends AbstractController
         //$photos = $em->getRepository(Photo::class)->getAllPers($currentPage, $limit);
 
         // Numero de fotos por página
-        $limit = 4;
+        $limit = 2;
 
         $repositorio = $doctrine->getRepository(Photo::class);
         $photos = $repositorio->getAllPers($currentPage, $limit);
@@ -53,7 +53,7 @@ class PhotoController extends AbstractController
         //$photos = $em->getRepository(Photo::class)->getAllPers($currentPage, $limit);
 
         // Numero de fotos por página
-        $limit = 4;
+        $limit = 2;
 
         $repositorio = $doctrine->getRepository(Photo::class);
         $photos = $repositorio->getAllPers($currentPage, $limit);
