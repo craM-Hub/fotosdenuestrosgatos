@@ -29,23 +29,24 @@
             </div>
             <p>Déjanos una nota:</p>
             {{ form_start(messagesForm) }}
-                <div
-                    class="w3-row-padding"
-                    style="margin: 0 -16px 8px -16px"
-                >
-                {{ form_row(messagesForm.name) }}
-                {{ form_row(messagesForm.email) }}
-                {{ form_row(messagesForm.message) }}
-                {{ form_row(messagesForm.save) }}
+            <div
+                class="w3-row-padding"
+                style="margin: 0 -16px 8px -16px"
+            >
+            {{ form_row(messagesForm.name) }}
+            {{ form_row(messagesForm.email) }}
+            {{ form_row(messagesForm.message) }}
+            {{ form_row(messagesForm.save) }}
             {{ form_end(messagesForm) }}
-        </div>
-        <div class="w3-col m4 w3-container">
-            <img
-                src="./assets/contact.png"
-                class="w3-image w3-round"
-                style="width: 100%"
-                alt="imagen-contacto"
-            />
+            </div>
+            <div class="w3-col m4 w3-container">
+                <img
+                    src="./assets/contact.png"
+                    class="w3-image w3-round"
+                    style="width: 100%"
+                    alt="imagen-contacto"
+                />
+            </div>
         </div>
     </div>
 </div>
