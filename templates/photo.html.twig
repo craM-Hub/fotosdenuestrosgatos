@@ -1,20 +1,5 @@
 {% extends 'base.html.twig' %}
 {% block title %}Fotos de nuestros gatos{% endblock %}
-{% block stylesheets %}
-    <link
-        rel="shortcut icon"
-        href="./assets/favicon.ico?v=2"
-        type="image/x-icon"/>
-    <link href="https://www.w3schools.com/w3css/4/w3.css"
-    rel="stylesheet"/>
-    <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        rel="stylesheet"/>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Heebo:wght@500;700&family=Lobster&display=swap"
-        rel="stylesheet"/>
-    <link rel="stylesheet" href="/styles/styles.css" />
-{% endblock %}
 {% block body %}
 {{ include ('/partials/navbar.html.twig') }}
 {{ include ('/partials/fondo_2.html.twig') }}
@@ -39,6 +24,9 @@
                 'label': 'Click para subir una foto'}) 
             }}
             </h1>
+            <h4>
+                {{ form_label(formulario) }}
+            </h4>
         </div>
         <div class="w3-padding" id="form-description">
             {{ form_widget(formulario.description, {
