@@ -31,7 +31,14 @@
     </div>
     <div>
         <div class="" id="form-fileName">
-            <h1>{{ form_row(formulario.fileName, {'label': 'Click para subir una foto'}) }}</h1>
+            <h1>
+            {{ form_row(formulario.fileName, {
+                'attr': {
+                    'style': 'display: none',
+                },
+                'label': 'Click para subir una foto'}) 
+            }}
+            </h1>
         </div>
         <div class="w3-padding" id="form-description">
             {{ form_widget(formulario.description, {
