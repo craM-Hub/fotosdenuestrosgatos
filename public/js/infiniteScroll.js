@@ -16,8 +16,4 @@ $(function () {
 		outlayer: msnry,
 		history: false,
 	});
-
-	/* $('.form-label').click(function () {
-		$('#photo_fileName').show();
-	}); */
 });
