@@ -22,6 +22,7 @@ class MessagesController extends AbstractController
 
         $messagesForm->handleRequest($request);
         if ($messagesForm->isSubmitted() && $messagesForm->isValid()) {
+            $this->addFlash('success', '¡Mensaje enviado correctamente!');
             $message = $messagesForm->getData();
 
             $entityManager = $doctrine->getManager();

@@ -20,6 +20,11 @@
 {{ include ('/partials/fondo_2.html.twig') }}
 
 <div class='w3-center'>
+    {% for message in app.flashes('success') %}
+        <div class="w3-panel w3-green">
+            {{ message }}
+        </div>
+    {% endfor %}
     {{ form_start(formulario) }}
     <div class="my-custom-class-for-errors">
         {{ form_errors(formulario) }}

@@ -101,7 +101,7 @@ html {
 	background-image: linear-gradient(to top, rgba(0, 0, 0, 0), floralwhite);
 }
 
-.navbar {
+.navbar-container {
 	z-index: 2;
 	background-image: linear-gradient(
 		to top,

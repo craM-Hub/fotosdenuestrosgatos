@@ -106,6 +106,7 @@ class PhotoController extends AbstractController
 
         $formulario->handleRequest($request);
         if ($formulario->isSubmitted() && $formulario->isValid()) {
+            $this->addFlash('success', 'Tu foto ha sido añadida correctamente!');
             $photoFile = $formulario->get('fileName')->getData();
             $originalFilename = pathinfo($photoFile->getClientOriginalName(), PATHINFO_FILENAME);
             $safeFilename = $slugger->slug($originalFilename);
