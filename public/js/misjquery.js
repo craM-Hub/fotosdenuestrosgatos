@@ -42,4 +42,8 @@ $(function () {
 			);
 		}
 	});
+	// tooltips
+	$(document).tooltip({
+		track: true,
+	});
 });
