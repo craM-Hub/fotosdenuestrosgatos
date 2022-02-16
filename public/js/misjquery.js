@@ -16,15 +16,35 @@ $(function () {
 	});
 
 	// cambio a tema oscuro
+	let flag = false;
 	$('#cambiarTema').click(function () {
-		$('body, html').css('background-color', '#121212');
-		$('.gradient').css(
-			'background-image',
-			'linear-gradient(to bottom, rgba(0, 0, 0, 0), #121212)'
-		);
-		$('.gradient-top').css(
-			'background-image',
-			'linear-gradient(to top, rgba(0, 0, 0, 0), #121212)'
-		);
+		if (!flag) {
+			flag = !flag;
+			$('body, html').css('background-color', '#121212');
+			$('.gradient').css(
+				'background-image',
+				'linear-gradient(to bottom, rgba(0, 0, 0, 0), #121212)'
+			);
+			$('.gradient-top').css(
+				'background-image',
+				'linear-gradient(to top, rgba(0, 0, 0, 0), #121212)'
+			);
+		} else {
+			flag = !flag;
+			$('body, html').css('background-color', 'floralwhite');
+			$('.gradient').css(
+				'background-image',
+				'linear-gradient(to bottom, rgba(0, 0, 0, 0), floralwhite)'
+			);
+			$('.gradient-top').css(
+				'background-image',
+				'linear-gradient(to top, rgba(0, 0, 0, 0), floralwhite)'
+			);
+		}
+	});
+
+	// cargar historia diaria desde txt por obligación de Mati
+	$('#about').click(function () {
+		$('#about').load('/data/dailyStory.html.twig');
 	});
 });
