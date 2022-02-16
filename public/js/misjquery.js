@@ -42,9 +42,4 @@ $(function () {
 			);
 		}
 	});
-
-	// cargar historia diaria desde txt por obligación de Mati
-	$('#about').click(function () {
-		$('#about').load('/data/dailyStory.html.twig');
-	});
 });
