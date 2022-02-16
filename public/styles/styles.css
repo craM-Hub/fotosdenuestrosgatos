@@ -311,10 +311,6 @@ button {
 	outline: inherit;
 }
 
-#desplegarHistoria {
-	display: none;
-}
-
 @-webkit-keyframes fade {
 	from {
 		opacity: 0.4;
