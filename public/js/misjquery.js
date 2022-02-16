@@ -1,6 +1,6 @@
 $(function () {
 	// Formulario envio fotos, muestra foto seleccionada
-	$('#photo_fileName').on('change', function (event) {
+	$('#photo_fileName').change(function (event) {
 		$('#fileName-container').show();
 
 		let inputFile = event.currentTarget;
