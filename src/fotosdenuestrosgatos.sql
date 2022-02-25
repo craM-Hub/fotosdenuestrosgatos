@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.9.5deb2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 29-01-2022 a las 01:51:53
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 8.0.3
+-- Host: localhost:3306
+-- Generation Time: Feb 25, 2022 at 12:39 PM
+-- Server version: 8.0.28-0ubuntu0.20.04.3
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,42 +19,64 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `fotosdenuestrosgatos`
+-- Database: `fotosdenuestrosgatos`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `doctrine_migration_versions`
+-- Table structure for table `doctrine_migration_versions`
 --
 
 CREATE TABLE `doctrine_migration_versions` (
-  `version` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `version` varchar(191) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `executed_at` datetime DEFAULT NULL,
-  `execution_time` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `execution_time` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `doctrine_migration_versions`
+-- Dumping data for table `doctrine_migration_versions`
 --
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
+('DoctrineMigrations\\Version20220124092126', '2022-02-03 10:40:18', 3076),
 ('DoctrineMigrations\\Version20220124122450', '2022-01-24 13:25:04', 39);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `photo`
+-- Table structure for table `messages`
 --
 
-CREATE TABLE `photo` (
-  `id` int(11) NOT NULL,
-  `file_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+CREATE TABLE `messages` (
+  `id` int NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `photo`
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `name`, `email`, `message`) VALUES
+(1, 'marc', 'marc@marc.com', 'marc'),
+(7, 'Marc', 'poneremail@correct.com', 'hola mati');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `photo`
+--
+
+CREATE TABLE `photo` (
+  `id` int NOT NULL,
+  `file_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `photo`
 --
 
 INSERT INTO `photo` (`id`, `file_name`, `description`) VALUES
@@ -77,33 +100,49 @@ INSERT INTO `photo` (`id`, `file_name`, `description`) VALUES
 (32, 'cat-61ef5696b71b0.jpg', 'resize prueba'),
 (33, 'cat2-61ef56ff42da1.jpg', 'resize prueba'),
 (34, 'cat-61f45dde25beb.jpg', 'sin resize'),
-(35, 'cat4-61f45eda260e1.jpg', 'ghjghj');
+(35, 'cat4-61f45eda260e1.jpg', 'ghjghj'),
+(38, 'cat2-6203752a4d02f.jpg', 'Probando mensaje flash de subir foto'),
+(39, 'cat2-62037608de217.jpg', 'Probando mensaje flash de subir foto'),
+(42, 'cat3-620f844c9a731.jpg', 'prueba con mati'),
+(43, 'cat2-6215fef9c60ec.jpg', 'pongo una descripcion');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `doctrine_migration_versions`
+-- Indexes for table `doctrine_migration_versions`
 --
 ALTER TABLE `doctrine_migration_versions`
   ADD PRIMARY KEY (`version`);
 
 --
--- Indices de la tabla `photo`
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `photo`
 --
 ALTER TABLE `photo`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `photo`
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `photo`
 --
 ALTER TABLE `photo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
