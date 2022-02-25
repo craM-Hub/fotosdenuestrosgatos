@@ -5,53 +5,53 @@
 {{ include ('/partials/fondo_2.html.twig') }}
 
 <div class='w3-center'>
-    {% for message in app.flashes('success') %}
-        <div class="w3-panel w3-green">
-            {{ message }}
-        </div>
-    {% endfor %}
-    {{ form_start(formulario) }}
+  {% for message in app.flashes('success') %}
+    <div class="w3-panel w3-green">
+      {{ message }}
+    </div>
+  {% endfor %}
+  {{ form_start(formulario) }}
     <div class="my-custom-class-for-errors">
-        {{ form_errors(formulario) }}
+      {{ form_errors(formulario) }}
     </div>
     <div>
-        <div class="" id="form-fileName" title="Click para subir una foto">
-            <h1>
-            {{ form_row(formulario.fileName, {
-                'attr': {
-                    'style': 'display: none',
-                },
-                'label': 'Click para subir una foto'}) 
-            }}
-            </h1>
-            <h4 id='fileName-container' style="display: none" class="w3-panel w3-blue">
-                {{ formulario.fileName.vars.name }}
-            </h4>
+      <div class="" id="form-fileName"{# title="Click para subir una foto" #}>
+        <h1>
+          {{ form_row(formulario.fileName, {
+            'attr': {
+              'style': 'display: none',
+            },
+            'label': 'Click para subir una foto'})
+          }}
+        </h1>
+        <h4 id='fileName-container' style="display: none" class="w3-panel w3-blue">
+          {{ formulario.fileName.vars.name }}
+        </h4>
+      </div>
+      <div class="w3-padding" id="form-description">
+        {{ form_widget(formulario.description, {
+          'attr': {
+            'class': 'w3-input',
+            'placeholder': 'Introduce una descripción'
+            }
+          })
+        }}
+      </div>
+      <div class="w3-center w3-padding-64">
+        <div class="w3-half" id="form-save">
+          {{ form_widget(formulario.save, {
+            'attr': {
+                'class': 'w3-btn w3-blue',
+            }
+            })
+          }}
         </div>
-        <div class="w3-padding" id="form-description">
-            {{ form_widget(formulario.description, {
-                'attr': {
-                    'class': 'w3-input',
-                    'placeholder': 'Introduce una descripción'
-                    }
-                })
-            }}
+        <div class="w3-half" id="form-description">
+            <a href="/" class="w3-btn w3-blue">Volver</a>
         </div>
-        <div class="w3-center w3-padding-64">
-            <div class="w3-half" id="form-save">
-                {{ form_widget(formulario.save, {
-                        'attr': {
-                            'class': 'w3-btn w3-blue',
-                        }
-                    })
-                }}
-            </div>
-            <div class="w3-half" id="form-description">
-                <a href="/" class="w3-btn w3-blue">Volver</a>
-            </div>
-        </div>
+      </div>
     </div>
+  {{ form_end(formulario) }}
 </div>
-{{ form_end(formulario) }}
-    {{ include ('/partials/footer.html.twig')  }}
+{{ include ('/partials/footer.html.twig')  }}
 {% endblock %}
